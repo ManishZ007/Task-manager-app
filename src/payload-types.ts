@@ -9,8 +9,9 @@
 export interface Config {
   collections: {
     users: User;
-    "payload-preferences": PayloadPreference;
-    "payload-migrations": PayloadMigration;
+    tasks: Task;
+    'payload-preferences': PayloadPreference;
+    'payload-migrations': PayloadMigration;
   };
   globals: {};
 }
@@ -20,7 +21,7 @@ export interface Config {
  */
 export interface User {
   id: string;
-  role: "user" | "admin";
+  role: 'user' | 'admin';
   username: string;
   updatedAt: string;
   createdAt: string;
@@ -35,12 +36,32 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tasks".
+ */
+export interface Task {
+  id: string;
+  title: string;
+  description?: string | null;
+  todos?:
+    | {
+        todo_title?: string | null;
+        todo_description?: string | null;
+        todo_marking?: ('red' | 'green' | 'yellow') | null;
+        todo_reminder?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
   id: string;
   user: {
-    relationTo: "users";
+    relationTo: 'users';
     value: string | User;
   };
   key?: string | null;
@@ -66,4 +87,9 @@ export interface PayloadMigration {
   batch?: number | null;
   updatedAt: string;
   createdAt: string;
+}
+
+
+declare module 'payload' {
+  export interface GeneratedTypes extends Config {}
 }

@@ -3,8 +3,16 @@
 import { FeaturesCard } from "@/components/Features-Card";
 import { MaxWidthComponent } from "@/components/MaxWidthComponent";
 import { LampComponent } from "@/components/ui/lamp";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Home() {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.refresh();
+  }, []);
+
   return (
     <>
       <MaxWidthComponent>

@@ -5,7 +5,7 @@ export const Users: CollectionConfig = {
   auth: {},
   access: {
     read: () => true,
-    create: () => false,
+    create: () => true,
   },
 
   fields: [

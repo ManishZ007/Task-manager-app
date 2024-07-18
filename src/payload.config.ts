@@ -5,14 +5,15 @@ import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import dotenv from "dotenv";
 import path from "path";
 import { Users } from "./collections/Users";
+import { Tasks } from "./collections/Tasks";
 
 dotenv.config();
 
 export default buildConfig({
   serverURL: process.env.NEXT_PUBLIC_SERVER_URL || "",
-  collections: [Users],
+  collections: [Users, Tasks],
   routes: {
-    admin: "/dashbord",
+    admin: "/admin",
   },
   admin: {
     user: "users",
