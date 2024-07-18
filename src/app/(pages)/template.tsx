@@ -23,7 +23,7 @@ export default function PageLayout({
         <div className="col-span-2 border-r-[1px] border-neutral-900 flex flex-col items-center gap-3 py-3 px-4">
           <TaskCreater />
         </div>
-        <div className="col-start-3 col-span-7 ">{children}</div>
+        <div className="col-start-3 col-span-8  ">{children}</div>
 
         <div className="col-end-12 col-span-1 ">hello</div>
       </div>
